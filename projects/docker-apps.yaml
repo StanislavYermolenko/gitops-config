@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: docker-apps
+  namespace: argocd
+spec:
+  description: Docker workloads via GitOps
+  sourceRepos:
+    - https://github.com/<твій-юзернейм>/docker_image_gitops
+    - https://charts.bitnami.com/bitnami
+  destinations:
+    - namespace: demo-app
+      server: https://kubernetes.default.svc
+    - namespace: nginx-app
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: docker-image-demo
+  namespace: argocd
+spec:
+  project: docker-apps
+  source:
+    repoURL: https://github.com/<твій-юзернейм>/docker_image_gitops
+    path: manifests
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo-app
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true

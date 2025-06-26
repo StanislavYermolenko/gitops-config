@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-demo
+  namespace: argocd
+spec:
+  project: docker-apps
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: nginx
+    targetRevision: 15.0.0
+    helm:
+      values: |
+        service:
+          type: LoadBalancer
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nginx-app
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
