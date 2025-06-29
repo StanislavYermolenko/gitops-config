@@ -4,17 +4,15 @@ metadata:
   name: docker-image-demo
   namespace: argocd
 spec:
-  project: docker-apps
+  project: docker-apps  # 🔗 Зв'язок із AppProject
   source:
-    repoURL: https://github.com/<твій-юзернейм>/docker_image_gitops
-    path: manifests
-    targetRevision: HEAD
+    repoURL: git@github.com:StanislavYermolenko/gitops-config.git
+    targetRevision: main
+    path: apps/docker-image-demo
   destination:
     server: https://kubernetes.default.svc
     namespace: demo-app
   syncPolicy:
     automated:
-      selfHeal: true
       prune: true
-    syncOptions:
-      - CreateNamespace=true
+      selfHeal: true

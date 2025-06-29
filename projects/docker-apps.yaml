@@ -6,13 +6,15 @@ metadata:
 spec:
   description: Docker workloads via GitOps
   sourceRepos:
-    - https://github.com/<твій-юзернейм>/docker_image_gitops
-    - https://charts.bitnami.com/bitnami
+    - https://github.com/StanislavYermolenko/gitops-config
   destinations:
     - namespace: demo-app
       server: https://kubernetes.default.svc
-    - namespace: nginx-app
-      server: https://kubernetes.default.svc
-  clusterResourceWhitelist:
-    - group: '*'
-      kind: '*'
+
+  clusterResourceWhitelist: []
+
+  namespaceResourceWhitelist: 
+    - group: apps               
+      kind: Deployment
+    - group: ""                 
+      kind: Service
