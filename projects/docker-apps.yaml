@@ -7,6 +7,7 @@ spec:
   description: Docker workloads via GitOps
   sourceRepos:
     - https://github.com/StanislavYermolenko/gitops-config
+    - git@github.com:StanislavYermolenko/gitops-config.git
   destinations:
     - namespace: demo-app
       server: https://kubernetes.default.svc
