@@ -7,7 +7,7 @@ spec:
   project: docker-apps  # 🔗 Зв'язок із AppProject
   source:
     repoURL: git@github.com:StanislavYermolenko/gitops-config.git
-    targetRevision: main
+    targetRevision: master
     path: apps/docker-image-demo
   destination:
     server: https://kubernetes.default.svc

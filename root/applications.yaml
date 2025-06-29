@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: git@github.com:StanislavYermolenko/gitops-config.git
-    targetRevision: main
+    targetRevision: master
     path: projects
   destination:
     server: https://kubernetes.default.svc
